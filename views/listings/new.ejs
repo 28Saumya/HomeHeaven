@@ -1,0 +1,113 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4">
+
+          <h2 class="mb-4 fw-bold text-center">
+            ➕ Add New Listing
+          </h2>
+
+          <!-- ================= FORM ================= -->
+          <form
+            method="POST"
+            action="/listings"
+            enctype="multipart/form-data"
+          >
+
+            <!-- TITLE -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Title</label>
+              <input
+                type="text"
+                name="listing[title]"
+                class="form-control"
+                placeholder="Enter listing title"
+                required
+              />
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Description</label>
+              <textarea
+                name="listing[description]"
+                class="form-control"
+                rows="4"
+                placeholder="Describe your place"
+                required
+              ></textarea>
+            </div>
+
+            <!-- PRICE -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Price (₹ / night)</label>
+              <input
+                type="number"
+                name="listing[price]"
+                class="form-control"
+                placeholder="e.g. 1500"
+                required
+              />
+            </div>
+
+            <!-- LOCATION -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Location</label>
+              <input
+                type="text"
+                name="listing[location]"
+                class="form-control"
+                placeholder="City / Area"
+                required
+              />
+            </div>
+
+            <!-- COUNTRY -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Country</label>
+              <input
+                type="text"
+                name="listing[country]"
+                class="form-control"
+                placeholder="Country"
+                required
+              />
+            </div>
+
+            <!-- IMAGE UPLOAD -->
+            <div class="mb-4">
+              <label class="form-label fw-semibold">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                name="image"
+                class="form-control"
+                accept="image/*"
+                required
+              />
+              <div class="form-text">
+                JPG, PNG or JPEG (from your computer)
+              </div>
+            </div>
+
+            <!-- SUBMIT -->
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg">
+                🚀 Create Listing
+              </button>
+            </div>
+
+          </form>
+          <!-- ================= END FORM ================= -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
