@@ -8,9 +8,30 @@ const { storage } = require("../config/cloudinary");
 const upload = multer({ storage });
 
 /* ================= INDEX ================= */
+// INDEX + SEARCH (SAFE)
 router.get("/", async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index", { allListings });
+  try {
+    let allListings;
+
+    if (req.query.search) {
+      const regex = new RegExp(req.query.search, "i");
+      allListings = await Listing.find({
+        $or: [
+          { title: regex },
+          { location: regex },
+          { country: regex }
+        ]
+      });
+    } else {
+      allListings = await Listing.find({});
+    }
+
+    res.render("listings/index", { allListings });
+
+  } catch (err) {
+    console.error(err);
+    res.render("listings/index", { allListings: [] });
+  }
 });
 
 /* ================= NEW ================= */
