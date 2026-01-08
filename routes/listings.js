@@ -4,7 +4,7 @@ const Listing = require("../models/listing");
 const { isLoggedIn, isOwner } = require("../middleware");
 
 const multer = require("multer");
-const { storage } = require("../cloudinary");
+const { storage } = require("../config/cloudinary");
 const upload = multer({ storage });
 
 /* ================= INDEX ================= */
